@@ -4,7 +4,7 @@ import NewNote from './NewNote'
 function App() {
   return (
     <>
-      <NewNote />
+      <NewNote addNote={alert} />
       <hr/>
       <ul>
         <li>Some note</li>
