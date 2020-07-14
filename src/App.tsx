@@ -2,16 +2,17 @@ import React from 'react';
 import NewNote from './NewNote'
 import { useDispatch, useSelector } from 'react-redux';
 import { NotesState } from './notesReducer';
+import { addNote } from './actions'
 
 function App() {
   const notes = useSelector<NotesState, NotesState['notes']>((state) => state.notes)
   const dispatch = useDispatch();
-  const addNote = (note: string) => {
-    dispatch({type: 'ADD_NOTE', payload: note})
+  const onAddNote = (note: string) => {
+    dispatch(addNote(note))
   }
   return (
     <>
-      <NewNote addNote={addNote} />
+      <NewNote addNote={onAddNote} />
       <hr/>
       <ul>
         {notes.map((note) => <li key={note}>{note}</li>)}
