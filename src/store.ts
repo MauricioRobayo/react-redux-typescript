@@ -1,4 +1,11 @@
-import { createStore } from 'redux';
-import notesReducer from './notesReducer';
+import { createStore, applyMiddleware } from 'redux';
+import {notesReducer} from './notesReducer';
+import { createLogger } from 'redux-logger';
 
-export default createStore(notesReducer);
+const logger = createLogger({
+  collapsed: true,
+})
+
+const middleware = applyMiddleware(logger);
+
+export default createStore(notesReducer, middleware);
