@@ -1,17 +1,16 @@
 import React, { useState, FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNote } from './actions';
 
-interface Props {
-  addNote(note: string): void
-}
-
-const NewNote: FC<Props> = ({addNote}) => {
+const NewNote: FC = () => {
   const [ note, setNote ] = useState('')
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNote(event.target.value)
   }
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    addNote(note);
+    dispatch(addNote(note));
     setNote('');
   }
 
