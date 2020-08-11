@@ -5,7 +5,7 @@ import { NotesState } from './notesReducer';
 import { addNote } from './actions'
 
 function App() {
-  const notes = useSelector<NotesState, NotesState['notes']>((state) => state.notes)
+  const notes = useSelector((state: NotesState) => state.notes)
   const dispatch = useDispatch();
   const onAddNote = (note: string) => {
     dispatch(addNote(note))
